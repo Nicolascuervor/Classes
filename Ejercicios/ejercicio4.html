@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Cliente {
+        constructor(tipo, servicio) {
+          this.tipo = tipo;
+          this.servicio = servicio;
+        }
+      }
+
+      class Banco {
+        constructor() {
+          this.preferencial = [];
+          this.general = [];
+          this.sincuenta = [];
+        }
+
+        clientepreferencial(servicio) {
+          this.preferencial.push(new Cliente("preferencial", servicio));
+        }
+
+        clientegeneral(servicio) {
+          this.general.push(new Cliente("general", servicio));
+        }
+
+        clienteSinCuenta(servicio) {
+          this.sincuenta.push(new Cliente("Sin cuenta", servicio));
+        }
+
+        turno() {
+          let filasDisponibles = filas.filter((x) => x === null);
+
+          for (let i = 0; i < filasDisponibles.length; i++) {
+            let numeroFila = i + 1;
+            let filaTipo = this.getTipoFila(numeroFila);
+
+            if (filaTipo === "retiro" && this.preferencial.length > 0) {
+              filas[i] = this.preferencial.shift();
+            } else if (filaTipo === "caja" && this.general.length > 0) {
+              filas[i] = this.general.shift();
+            } else if (numeroFila === 5 && this.sincuenta.length > 0) {
+              filas[i] = this.sincuenta.shift();
+            }
+          }
+        }
+
+        getTipoFila(filaNumero) {
+          if (filaNumero === 1 || filaNumero === 2) {
+            return "retiro";
+          } else if (filaNumero === 3 || filaNumero === 4) {
+            return "caja";
+          } else {
+            return "asesoria";
+          }
+        }
+
+        static filas() {
+          return this.filas;
+        }
+      }
+
+      let filas = [null, null, null, null, null];
+
+      let persona = new Banco();
+      persona.clientegeneral("caja");
+
+      let persona2 = new Banco();
+      persona2.clientepreferencial("caja");
+      persona2.turno();
+      
+
+
+
+
+
+
+
+      console.log(filas);
+    </script>
+  </body>
+</html>

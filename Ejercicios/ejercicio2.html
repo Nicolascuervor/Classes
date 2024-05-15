@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("Ingrese su usuario y contraseña");
+
+      class Cajero {
+        constructor(usuario, pin, baseUsuario, basePin) {
+          this.usuario = usuario;
+          this.pin = pin;
+          this.baseUsuario = "xxx";
+          this.basePin = 1234;
+          this.tiposCuenta = ["hogar", "ahorros", "personal"];
+          this.tiposIngreso = ["cheque", "efectivo"];
+          this.intentos = [];
+        }
+
+        validacion() {
+          if (this.baseUsuario != this.usuario || this.basePin != this.pin) {
+            console.log(
+              "Usuario no encontrado en la base de datos, ingrese nuevamente los datos"
+            );
+            this.intentos.push(1);
+          } else {
+            console.log("Usuario encontrado, puede ingresar");
+            console.log(
+              "Menu:\n 1. Retirar \n 2. Ingresar \n 3. Salir de cuenta  "
+            );
+          }
+          if (this.intentos.length > 3) {
+            console.clear();
+            console.log(
+              "A superado el limite de intentos, ingrese un usuario diferente"
+            );
+          } else {
+          }
+        }
+
+        retiro(cantidad, tipo) {
+          if (cantidad >= 50000 && this.tiposCuenta.find((x) => x == tipo)) {
+            console.log(
+              `Se han retirado ${cantidad} pesos de su cuenta ${tipo}`
+            );
+          } else {
+            console.log("Cuenta no encontrada o dinero insuficiente");
+          }
+        }
+
+        ingreso(cantidad, cuenta, tipo) {
+          if (
+            cantidad >= 10000 &&
+            cantidad <= 1000000 &&
+            this.tiposCuenta.find((x) => x == cuenta) &&
+            this.tiposIngreso.find((x) => x == tipo)
+          ) {
+            console.log(
+              `Se han ingresado ${cantidad} pesos a la cuenta ${cuenta} en forma ${tipo} `
+            );
+          } else {
+            console.log(
+              "Error al realizar la transaccion, verifique sus datos, "
+            );
+          }
+        }
+
+        salir() {
+          console.clear();
+          console.log("Ha salido de su cuenta");
+        }
+
+        static apagar() {
+          console.clear();
+          console.log("Cajero apagado");
+        }
+
+        static encendido() {
+          console.log("cajero encendido");
+        }
+      }
+
+      let persona = new Cajero("xxx", 1234);
+
+      persona.validacion();
+      persona.retiro(50000, "hogar");
+      persona.ingreso(10000, "ahorros", "cheque");
+      persona.salir();
+
+      let human = new Cajero("xxx", 1234);
+      human.validacion();
+    
+    
+    </script>
+  </body>
+</html>

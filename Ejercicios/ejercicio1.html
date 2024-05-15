@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+
+      let atendidos = [];
+
+      let total = [];
+
+      class Atencion {
+        constructor(usuario) {
+          this.usuario = usuario;
+        }
+
+        telefonica(usuario) {
+          if (this.telefonica) {
+            console.log("Se encuentra en la linea telefonica");
+            atendidos.push(this.usuario);
+            
+          }
+        }
+        oficina(usuario) {
+          if (this.oficina) {
+            console.log("Se encuentra en la linea de la oficina");
+            atendidos.push(this.usuario);
+          }
+        }
+      }
+
+      let usuario_a = new Atencion("Nicolas");
+      usuario_a.oficina();
+      
+     
+
+      
+
+      for (let i = 0; i < atendidos.length; i++) {
+        if (total.includes(atendidos[i])) {
+        } else {
+          total.push(atendidos[i]);
+        }
+      }
+
+      console.log("ESTADISTICAS");
+      console.log("Personas atendidas:");
+      console.log(total.length);
+  
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Subasta {
+        constructor(id, nombre, fecha, precio) {
+          this.id = id;
+          this.nombre = nombre;
+          this.fecha = fecha;
+          this.precio = precio;
+        }
+
+        puja(fehca, producto, valor) {
+          lista.push([fehca, producto, valor]);
+          productos.push(producto);
+          valores.push(valor);
+        }
+
+        
+      }
+      let max = 0;
+      let lista = [];
+      let productos = [];
+      let valores = [];
+
+      let persona = new Subasta("A1", "xxx", 11, 100000);
+
+      persona.puja(11, "casa", 10000000);
+
+      let persona2 = new Subasta("A2", "xxxx", 12, 200000);
+      persona2.puja(12, "collar", 200000);
+
+      let persona3 = new Subasta("A3", "xxxxx", 11, 200000);
+      persona3.puja(12, "collar", 20000);
+
+      /*-------------------------------------*/
+      console.log("INFORMACION DE SUBASTAS");
+      console.log(lista);
+
+      console.log("PRODUCTOS DE SUBASTA");
+
+      console.log(productos);
+
+    </script>
+  </body>
+</html>

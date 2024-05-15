@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Hotel {
+        constructor(cliente, habitacion, clase, mascotas) {
+          this.cliente = cliente;
+          this.habitacion = [
+            ["individual", 2],
+            ["doble", 4],
+            ["familiar", 6],
+          ];
+        }
+
+        reserva(tipo, cantidad, fumador, mascotas) {
+          if (
+            tipo == this.habitacion[0][0] &&
+            cantidad <= this.habitacion[0][1] &&
+            mascotas == 0
+          ) {
+            infoReserva.nombre = this.cliente;
+            infoReserva.tipo = tipo;
+            infoReserva.personas = cantidad;
+            infoReserva.fumador = fumador;
+            infoReserva.mascotas = 0;
+          } else if (
+            tipo == this.habitacion[1][0] &&
+            cantidad <= this.habitacion[1][1] &&
+            mascotas == 0
+          ) {
+            infoReserva.nombre = this.cliente;
+            infoReserva.tipo = tipo;
+            infoReserva.personas = cantidad;
+            infoReserva.fumador = fumador;
+            infoReserva.mascotas = 0;
+          } else if (
+            tipo == this.habitacion[2][0] &&
+            cantidad <= this.habitacion[2][1]
+          ) {
+            infoReserva.nombre = this.cliente;
+            infoReserva.tipo = tipo;
+            infoReserva.personas = cantidad;
+            infoReserva.fumador = fumador;
+            infoReserva.mascotas = mascotas;
+          } else {
+            console.log(
+              "Ingrese correctamente el numero de personas permitidas \npor habitacion y tipo. Recuerde que solo se permiten \nmascotas en la habitaciones familiares"
+            );
+          }
+        }
+      }
+
+      let infoReserva = {
+        nombre: null,
+        tipo: null,
+        personas: null,
+        fumador: null,
+        mascotas: null,
+      };
+
+      console.log("INFORMACION DE RESERVA:");
+      /*-----------------------------------------------------------------*/
+      
+      let persona = new Hotel("Nicolas");
+      persona.reserva("familiar", 3, false, 3);
+
+      console.log(infoReserva);
+    </script>
+  </body>
+</html>

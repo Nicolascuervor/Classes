@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Tienda {
+        constructor(
+          codigo,
+          descripcion,
+          precioCompra,
+          precioVenta,
+          cantidadBodega,
+          cantidadMinima,
+          cantidadMaxima,
+          porcentajeDescuento
+        ) {
+          this.codigo = codigo;
+          this.descripcion = descripcion;
+          this.precioCompra = precioCompra;
+          this.precioVenta = precioVenta;
+          this.cantidadBodega = cantidadBodega;
+          this.cantidadMinima = cantidadMinima;
+          this.cantidadMaxima = cantidadMaxima;
+          this.porcentajeDescuento = porcentajeDescuento;
+        }
+
+        solicitarPedido() {
+          return this.cantidadBodega <= this.cantidadMinima;
+        }
+
+        calcularTotalAPagar(cantidadCompra) {
+          let totalAPagar = cantidadCompra * this.precioCompra;
+          if (cantidadCompra > this.cantidadMaxima) {
+            totalAPagar *= 1 - this.porcentajeDescuento / 100;
+          }
+          return totalAPagar;
+        }
+      }
+
+      class PrendaVestir extends Tienda {
+        constructor(
+          codigo,
+          descripcion,
+          precioCompra,
+          precioVenta,
+          cantidadBodega,
+          cantidadMinima,
+          cantidadMaxima,
+          porcentajeDescuento,
+          talla,
+          permitePlanchado
+        ) {
+          super(
+            codigo,
+            descripcion,
+            precioCompra,
+            precioVenta,
+            cantidadBodega,
+            cantidadMinima,
+            cantidadMaxima,
+            porcentajeDescuento
+          );
+          this.talla = talla;
+          this.permitePlanchado = permitePlanchado;
+        }
+      }
+
+      class Calzado extends Tienda {
+        constructor(
+          codigo,
+          descripcion,
+          precioCompra,
+          precioVenta,
+          cantidadBodega,
+          cantidadMinima,
+          cantidadMaxima,
+          porcentajeDescuento,
+          talla
+        ) {
+          super(
+            codigo,
+            descripcion,
+            precioCompra,
+            precioVenta,
+            cantidadBodega,
+            cantidadMinima,
+            cantidadMaxima,
+            porcentajeDescuento
+          );
+          this.talla = talla;
+        }
+      }
+
+      let prendasDeVestir = [];
+      let calzado = [];
+
+      let nuevaPrenda = new PrendaVestir(
+        "123",
+        "camisa",
+        1,
+        25,
+        12,
+        34,
+        15,
+        38,
+        "M",
+        true
+      );
+      prendasDeVestir.push(nuevaPrenda);
+
+      let nuevoCalzado = new Calzado("321", "tenis", 7, 30, 86, 22, 15, 0, 10);
+      calzado.push(nuevoCalzado);
+    </script>
+  </body>
+</html>
